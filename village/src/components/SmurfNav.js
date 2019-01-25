@@ -10,12 +10,13 @@ import {
 class SmurfNav extends Component {
   render() {
     return (
-      <Navbar>
-        <NavbarBrand>Smurfs</NavbarBrand>
+      <Navbar color="primary">
+        <NavbarBrand><h1>Smurfs</h1></NavbarBrand>
         <Nav>
             <NavItem>
                 <NavLink 
                     exact to="/" 
+                    style={{color: "white"}}
                     activeStyle={{
                         textDecoration: "underline"
                     }}
@@ -26,6 +27,7 @@ class SmurfNav extends Component {
             <NavItem>
                 <NavLink 
                     exact to="/smurf-form"
+                    style={{color: "white"}}
                     activeStyle={{
                         textDecoration: "underline"
                     }}

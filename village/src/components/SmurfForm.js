@@ -38,7 +38,7 @@ class SmurfForm extends Component {
       <div className="SmurfForm">
         {this.state.Error && <h3>{this.state.Error}</h3>}
         <Form onSubmit={this.addSmurf}>
-          <FormText>Please fill in all fields to add a Smurf</FormText>
+          <FormText><h3>Please fill in all fields to add a Smurf</h3></FormText>
           <FormGroup row>
             <Label for="name" sm={2}>Name</Label>
             <Col sm={10}>
@@ -80,7 +80,7 @@ class SmurfForm extends Component {
           </FormGroup>
           <FormGroup check row>
             <Col sm={{ size: 10, offset: 1 }}>
-              <Button type="submit" color="primary">Add to the village</Button>
+              <Button type="submit">Add to the village</Button>
             </Col>
           </FormGroup>
         </Form>

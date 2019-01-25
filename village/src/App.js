@@ -24,7 +24,7 @@ class App extends Component {
     .catch( err => {
       this.setState({
         ...this.state,
-        err: `Error: ${err.response.status} - ${err.response.statusText} `
+        error: `Error: ${err.response.status} - ${err.response.statusText} `
       })
     })
   }
@@ -32,8 +32,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SmurfForm />
-        <Smurfs smurfs={this.state.smurfs} />
+        {this.state.error 
+        ? <h2>{this.state.error}</h2> 
+        : <div>
+            <SmurfForm />
+            <Smurfs smurfs={this.state.smurfs} />
+          </div>
+        }
       </div>
     );
   }

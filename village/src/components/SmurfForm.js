@@ -16,7 +16,7 @@ class SmurfForm extends Component {
     event.preventDefault();
     axios
       .post('http://localhost:3333/smurfs', this.state)
-      .then( () => {this.props.addSmurf() })
+      .then( () => {this.props.updateSmurfList() })
       .then( () => {this.props.history.goBack() })
       .catch( err => {
         this.setState(err.response.data)

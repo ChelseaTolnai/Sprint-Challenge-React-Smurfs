@@ -31,7 +31,7 @@ class App extends Component {
     })
   }
 
-  addSmurf = () => {
+  updateSmurfList = () => {
     this.componentDidMount();
   }
 
@@ -45,13 +45,13 @@ class App extends Component {
             <Route 
               exact path="/smurf-form"
               render={props => 
-                <SmurfForm {...props} addSmurf={this.addSmurf} />
+                <SmurfForm {...props} updateSmurfList={this.updateSmurfList} />
               } 
             />
             <Route 
               exact path="/" 
               render={props => 
-                <Smurfs {...props} smurfs={this.state.smurfs} />
+                <Smurfs {...props} smurfs={this.state.smurfs} updateSmurfList={this.updateSmurfList}/>
               } 
             />
 

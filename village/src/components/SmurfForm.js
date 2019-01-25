@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class SmurfForm extends Component {
   constructor(props) {
@@ -6,13 +8,19 @@ class SmurfForm extends Component {
     this.state = {
       name: '',
       age: '',
-      height: ''
+      height: '',
     };
   }
 
   addSmurf = event => {
     event.preventDefault();
-    // add code to create the smurf using the api
+    axios
+      .post('http://localhost:3333/smurfs', this.state)
+      .then( () => {this.props.updateSmurfList() })
+      .then( () => {this.props.history.goBack() })
+      .catch( err => {
+        this.setState(err.response.data)
+      })
 
     this.setState({
       name: '',
@@ -28,27 +36,54 @@ class SmurfForm extends Component {
   render() {
     return (
       <div className="SmurfForm">
-        <form onSubmit={this.addSmurf}>
-          <input
-            onChange={this.handleInputChange}
-            placeholder="name"
-            value={this.state.name}
-            name="name"
-          />
-          <input
-            onChange={this.handleInputChange}
-            placeholder="age"
-            value={this.state.age}
-            name="age"
-          />
-          <input
-            onChange={this.handleInputChange}
-            placeholder="height"
-            value={this.state.height}
-            name="height"
-          />
-          <button type="submit">Add to the village</button>
-        </form>
+        {this.state.Error && <h3>{this.state.Error}</h3>}
+        <Form onSubmit={this.addSmurf}>
+          <FormText><h3>Please fill in all fields to add a Smurf</h3></FormText>
+          <FormGroup row>
+            <Label for="name" sm={2}>Name</Label>
+            <Col sm={10}>
+              <Input
+                type="text"
+                onChange={this.handleInputChange}
+                placeholder="name"
+                value={this.state.name}
+                name="name"
+                id="name"
+              />
+            </Col>
+          </FormGroup>
+          <FormGroup row>
+            <Label for="age" sm={2}>Age</Label>
+              <Col sm={10}>
+                <Input
+                  type="number"
+                  onChange={this.handleInputChange}
+                  placeholder="age"
+                  value={this.state.age}
+                  name="age"
+                  id="age"
+                />
+            </Col>
+          </FormGroup>
+          <FormGroup row>
+            <Label for="height" sm={2}>Height</Label>
+              <Col sm={10}>
+                <Input
+                  type="text"
+                  onChange={this.handleInputChange}
+                  placeholder="height (ex. 7cm)"
+                  value={this.state.height}
+                  name="height"
+                  id="height"
+                />
+            </Col>
+          </FormGroup>
+          <FormGroup check row>
+            <Col sm={{ size: 10, offset: 1 }}>
+              <Button type="submit">Add to the village</Button>
+            </Col>
+          </FormGroup>
+        </Form>
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Link } from "react-router-dom";
 import './App.css';
 import { Button} from 'reactstrap';
+import SmurfNav from './components/SmurfNav'
 import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
 import axios from 'axios';
@@ -40,6 +41,7 @@ class App extends Component {
         {this.state.error 
         ? <h2>{this.state.error}</h2> 
         : <div>
+            <SmurfNav/>
             <Route 
               exact path="/smurf-form"
               render={props => 

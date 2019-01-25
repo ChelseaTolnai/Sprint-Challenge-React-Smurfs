@@ -1,3 +1,24 @@
+/* General */
 .App {
   text-align: center;
+}
+
+/* Nav */
+.nav {
+  width: 30%;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+
+.nav-item {
+  margin-left: 10%;
+}
+
+/* Smurf Cards */
+.smurfs-cards-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
 }
